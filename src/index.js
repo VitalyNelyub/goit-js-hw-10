@@ -42,8 +42,8 @@ function fetchCountry(country) {
 
 function renderCountryInfo(country) {
   console.log(country[0]);
-  countryInfo.innerHTML = `<img src=${country[0].flags.svg} width = 60, height = 40><h2>${country[0].name.official}</h2><li>Capital: ${country[0].capital}</li>
-    <li>Population: ${country[0].population}</li><li>Languages: ${country[0].languages}</li>`;
+  countryInfo.innerHTML = `<img src=${country[0].flags.svg} width = 60, height = 40><h2>${country[0].name.official}</h2><ul><li>Capital: ${country[0].capital}</li>
+    <li>Population: ${country[0].population}</li><li>Languages: ${country[0].languages}</li></ul>`;
   //   console.log('ПРИВЕТ Я ИСКОМАЯ СТРАНА');
 }
 
