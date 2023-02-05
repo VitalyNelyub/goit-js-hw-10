@@ -35,17 +35,27 @@ function fetchCountry(country) {
     })
     .then(country => {
       console.log(country);
+    //   preRenderCountries;
       return country;
     })
-    .then(renderCountryInfo);
+    .then(renderCountryInfo)
+    .catch(error => {
+      Notiflix.Notify.failure('Oops, there is no country with that name');
+    });
 }
 
 function renderCountryInfo(country) {
   console.log(country[0]);
-  countryInfo.innerHTML = `<img src=${country[0].flags.svg} width = 60, height = 40><h2>${country[0].name.official}</h2><ul><li>Capital: ${country[0].capital}</li>
+  countryInfo.innerHTML = `<img src=${country[0].flags.svg} width = 150, height = 90><h2>${country[0].name.official}</h2><ul><li>Capital: ${country[0].capital}</li>
     <li>Population: ${country[0].population}</li><li>Languages: ${country[0].languages}</li></ul>`;
   //   console.log('ПРИВЕТ Я ИСКОМАЯ СТРАНА');
 }
+
+// function preRenderCountries(country) {
+//   for (let i = 0; i <= country.length; i++)
+//   console.log([i])
+//     countryList.insertAdjacentHTML = `<img src=${country[i].flags.svg} width = 60, height = 40><h2>${country[i].name.official}</h2>`;
+// }
 
 //
 
