@@ -4,7 +4,7 @@ import './css/styles.css';
 const debounce = require('lodash.debounce');
 import Notiflix from 'notiflix';
 
-const DEBOUNCE_DELAY = 1500;
+const DEBOUNCE_DELAY = 300;
 
 const inputField = document.getElementById('search-box');
 const countryList = document.querySelector('.country-list');
@@ -34,12 +34,26 @@ function fetchCountry(country) {
       return response.json();
     })
     .then(country => {
-      console.log(country);
-      //   preRenderCountries;
-      return country;
+        if (currentInputValue === '') {
+          countryList.innerHTML = '';
+          countryInfo.innerHTML = '';
+        } else if (country.length > 10) {
+          Notiflix.Notify.warning(
+            'Too many matches found. Please enter a more specific name.'
+          );
+        } else if (country.length > 1 && country.length < 10) {
+          console.log(country.length);
+          preRenderCountries(country);
+          countryInfo.innerHTML = '';
+          // return country;
+        } else if (country.length <= 1 && country.length > 0) {
+          console.log(country);
+          renderCountryInfo(country);
+          countryList.innerHTML = '';
+        }
     })
-    .then(preRenderCountries)
     .catch(error => {
+      console.log('ERRRRRRROOOORRRR');
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
 }
@@ -56,31 +70,10 @@ function renderCountryInfo(country) {
     } citizens</li><li>Languages: ${Object.values(
     country[0].languages
   )}</li></ul>`;
-  //   console.log('ПРИВЕТ Я ИСКОМАЯ СТРАНА');
 }
-
-// preRenderCountries()
 
 function preRenderCountries(country) {
   country.map(e => {
     countryList.innerHTML += `<li><img src=${e.flags.svg} width = 60, height = 40><h2>${e.name.official}</h2></li>`;
   });
- }
-
-// function preRenderCountries(country) {
-//   for (let i = 0; i <= country.length; i++) console.log([i]);
-//   countryList.insertAdjacentHTML(
-//     'beforeend',
-//     `<li><img src=${country[i].flags.svg} width = 60, height = 40><h2>${country[i].name.official}</h2></li>`
-//   );
-// }
-
-//
-
-// Notiflix.Notify.success('Oops, there is no country with that name');
-
-// Notiflix.Notify.failure('Oops, there is no country with that name');
-
-// Notiflix.Notify.warning('Oops, there is no country with that name');
-
-// Notiflix.Notify.info('Oops, there is no country with that name');
+}
