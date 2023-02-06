@@ -18,3 +18,23 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+li {
+  list-style: none;
+}
+
+.country-list {
+  font-size: 15px;
+  color: black;
+  text-decoration: underline 3px solid rgb(37, 37, 7);
+}
+
+.country-title {
+  color: blue;
+  text-decoration: underline 3px solid rgb(211, 211, 5);
+}
+
+.country-list-info {
+  color: rgb(48, 134, 48);
+  font-size: 25px;
+}
