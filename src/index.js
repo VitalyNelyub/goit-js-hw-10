@@ -35,7 +35,7 @@ function fetchCountry(country) {
     })
     .then(country => {
       console.log(country);
-    //   preRenderCountries;
+      // preRenderCountries;
       return country;
     })
     .then(renderCountryInfo)
@@ -46,15 +46,25 @@ function fetchCountry(country) {
 
 function renderCountryInfo(country) {
   console.log(country[0]);
-  countryInfo.innerHTML = `<img src=${country[0].flags.svg} width = 150, height = 90><h2>${country[0].name.official}</h2><ul><li>Capital: ${country[0].capital}</li>
-    <li>Population: ${country[0].population}</li><li>Languages: ${country[0].languages}</li></ul>`;
+  countryInfo.innerHTML = `<img src=${
+    country[0].flags.svg
+  } width = 150, height = 90><h2>${
+    country[0].name.official
+  }</h2><ul><li>Capital: ${country[0].capital}</li>
+    <li>Population: ${
+      country[0].population
+    } citizens</li><li>Languages: ${Object.values(
+    country[0].languages
+  )}</li></ul>`;
   //   console.log('ПРИВЕТ Я ИСКОМАЯ СТРАНА');
 }
 
 // function preRenderCountries(country) {
-//   for (let i = 0; i <= country.length; i++)
-//   console.log([i])
-//     countryList.insertAdjacentHTML = `<img src=${country[i].flags.svg} width = 60, height = 40><h2>${country[i].name.official}</h2>`;
+//   for (let i = 0; i <= country.length; i++) console.log([i]);
+//   countryList.insertAdjacentHTML(
+//     'beforeend',
+//     `<li><img src=${country[i].flags.svg} width = 60, height = 40><h2>${country[i].name.official}</h2></li>`
+//   );
 // }
 
 //
