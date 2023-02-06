@@ -16,7 +16,6 @@ let currentInputValue = null;
 
 function getInputValue(event) {
   currentInputValue = event.target.value.trim();
-  //   console.log(currentInputValue);
   fetchCountry(currentInputValue)
     .then(country => {
       if (currentInputValue === '') {
@@ -27,12 +26,9 @@ function getInputValue(event) {
           'Too many matches found. Please enter a more specific name.'
         );
       } else if (country.length > 1 && country.length < 10) {
-        //   console.log(country.length);
         preRenderCountries(country);
         countryInfo.innerHTML = '';
-        // return country;
       } else if (country.length <= 1 && country.length > 0) {
-        //   console.log(country);
         renderCountryInfo(country);
         countryList.innerHTML = '';
       } else {
@@ -46,7 +42,6 @@ function getInputValue(event) {
 }
 
 function renderCountryInfo(country) {
-  //   console.log(country[0]);
   countryInfo.innerHTML = `<img src=${
     country[0].flags.svg
   } width = 150, height = 90><h2 class = "country-title">${
