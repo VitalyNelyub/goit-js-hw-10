@@ -35,10 +35,12 @@ function getInputValue(event) {
         //   console.log(country);
         renderCountryInfo(country);
         countryList.innerHTML = '';
+      } else {
+        Notiflix.Notify.failure('Oops, there is no country with that name');
       }
     })
     .catch(error => {
-      //   console.log('ERRRRRRROOOORRRR');
+      console.log('ERRRRRRROOOORRRR');
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
 }
