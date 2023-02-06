@@ -35,10 +35,10 @@ function fetchCountry(country) {
     })
     .then(country => {
       console.log(country);
-      // preRenderCountries;
+      //   preRenderCountries;
       return country;
     })
-    .then(renderCountryInfo)
+    .then(preRenderCountries)
     .catch(error => {
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
@@ -58,6 +58,14 @@ function renderCountryInfo(country) {
   )}</li></ul>`;
   //   console.log('ПРИВЕТ Я ИСКОМАЯ СТРАНА');
 }
+
+// preRenderCountries()
+
+function preRenderCountries(country) {
+  country.map(e => {
+    countryList.innerHTML += `<li><img src=${e.flags.svg} width = 60, height = 40><h2>${e.name.official}</h2></li>`;
+  });
+ }
 
 // function preRenderCountries(country) {
 //   for (let i = 0; i <= country.length; i++) console.log([i]);
